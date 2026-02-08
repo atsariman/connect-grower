@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Chat from './pages/Chat';
 import Forum from './pages/Forum';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './styles/index.css';
@@ -44,6 +45,11 @@ function App() {
                 <Route path="/login" element={<Login />} />
 
                 {/* Protected Routes */}
+                <Route path="/profile" element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                } />
                 <Route path="/chat" element={
                   <PrivateRoute>
                     <Chat />
