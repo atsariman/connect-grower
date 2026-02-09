@@ -6,7 +6,7 @@ import { doc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 
 const PostCard = ({ post }) => {
     const { currentUser } = useAuth();
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const [likes, setLikes] = useState(post.likes || []);
     const [comments, setComments] = useState(post.comments || []);
     const [translatedComments, setTranslatedComments] = useState({});
@@ -127,6 +127,7 @@ const PostCard = ({ post }) => {
             await updateDoc(postRef, {
                 likes: arrayUnion(currentUser.uid)
             });
+            alert(t('sunFeedback'));
         }
         setIsLiked(!isLiked);
     };
@@ -207,10 +208,10 @@ const PostCard = ({ post }) => {
                         onClick={handleLike}
                         style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
                     >
-                        <span style={{ fontSize: '20px', color: isLiked ? '#ff0033' : '#333' }}>
-                            {isLiked ? '❤️' : '🤍'}
+                        <span style={{ fontSize: '20px', color: isLiked ? '#FFD700' : '#333' }}>
+                            {isLiked ? '☀️' : '🌥️'}
                         </span>
-                        <span style={{ fontSize: '14px', color: isLiked ? '#ff0033' : '#666' }}>{likes.length > 0 ? likes.length : ''}</span>
+                        <span style={{ fontSize: '14px', color: isLiked ? '#FFD700' : '#666' }}>{likes.length > 0 ? likes.length : ''}</span>
                     </button>
 
                     <button
