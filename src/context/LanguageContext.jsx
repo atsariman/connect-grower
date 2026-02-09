@@ -263,8 +263,8 @@ const translations = {
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-    // Default language updated to Korean ('ko')
-    const [language, setLanguage] = useState('ko');
+    // Default language reverted to English ('en')
+    const [language, setLanguage] = useState('en');
 
     const value = {
         language,
