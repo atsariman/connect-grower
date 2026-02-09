@@ -42,7 +42,7 @@ const Home = () => {
                 <div className="sidebar-card">
                     <div className="sidebar-header">COMMUNITIES</div>
                     <div className="sidebar-menu-item active" style={{ background: '#e8f5e9', fontWeight: 'bold', color: 'var(--primary-color)' }}>
-                        🍇 r/GrapeGrowers
+                        🍊 r/CitrusGrowers
                     </div>
                 </div>
 
@@ -72,7 +72,7 @@ const Home = () => {
                         <div style={{ textAlign: 'center', padding: '40px', color: '#888' }}>
                             <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🍂</div>
                             <h3>No posts yet</h3>
-                            <p>Share your grape growing journey!</p>
+                            <p>Share your citrus growing journey!</p>
                         </div>
                     )}
                 </div>

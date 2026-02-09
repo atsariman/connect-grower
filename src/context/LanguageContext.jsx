@@ -13,7 +13,7 @@ const translations = {
         updatesTitle: 'Latest Updates from Farmers 🌾',
         post1: 'Today we harvested 500kg of organic tomatoes! 🍅 The weather was perfect.',
         post2: 'Trying out a new irrigation system for my corn fields. Any tips? 🌽',
-        post3: 'Harvest season for grapes is starting next week! 🍇 Excited but nervous.',
+        post3: 'Harvest season for tangerines is starting next week! 🍊 Excited but nervous.',
         likes: 'Sun ☀️',
         comment: 'Branch 🌿',
         translate: 'Translate',
@@ -46,7 +46,7 @@ const translations = {
         cancel: 'Cancel',
         nickname: 'Nickname',
         farmName: 'Farm Name',
-        farmNamePlaceholder: 'Farm Name (e.g., Sunny Vinyard)',
+        farmNamePlaceholder: 'Farm Name (e.g., Sunny Orchard)',
         location: 'Location',
         locationPlaceholder: 'Location (e.g., Napa Valley, CA)',
         bio: 'Bio',
@@ -65,7 +65,7 @@ const translations = {
         postBtn: 'Plant 🌱',
         startConversation: 'Grow a new branch...',
         sunFeedback: 'You cast a Sun beam! ☀️',
-        grapeMember: 'GrapeGrowers Member'
+        grapeMember: 'CitrusGrowers Member 🍊'
     },
     ko: {
         logo: '🌱 ConnectGrower',
@@ -78,7 +78,7 @@ const translations = {
         updatesTitle: '농부들의 최신 소식 🌾',
         post1: '오늘 유기농 토마토 500kg 수확했어요! 🍅 날씨가 정말 완벽했네요.',
         post2: '옥수수 밭에 새로운 관개 시스템을 써보는 중이에요. 팁 있으신 분? 🌽',
-        post3: '다음 주부터 포도 수확 시작해요! 🍇 설레기도 하고 긴장되네요.',
+        post3: '다음 주부터 감귤 수확 시작해요! 🍊 설레기도 하고 긴장되네요.',
         likes: '햇살 ☀️',
         comment: '가지 🌿',
         translate: '번역하기',
@@ -111,7 +111,7 @@ const translations = {
         cancel: '취소',
         nickname: '닉네임',
         farmName: '농장 이름',
-        farmNamePlaceholder: '농장 이름 (예: 햇살 포도원)',
+        farmNamePlaceholder: '농장 이름 (예: 햇살 감귤밭)',
         location: '위치',
         locationPlaceholder: '위치 (예: 경북 영천)',
         bio: '소개',
@@ -130,7 +130,7 @@ const translations = {
         postBtn: '심기 🌱',
         startConversation: '새로운 가지를 쳐보세요...',
         sunFeedback: '햇살을 비추었습니다! ☀️',
-        grapeMember: '포도 재배자 멤버 🍇'
+        grapeMember: '감귤 재배자 멤버 🍊'
     },
     ja: {
         logo: '🌱 ConnectGrower',
@@ -143,7 +143,7 @@ const translations = {
         updatesTitle: '農家からの最新情報 🌾',
         post1: '今日、有機トマト500kgを収穫しました！🍅 天気は最高でした。',
         post2: 'トウモロコシ畑で新しい灌漑システムを試しています。何かアドバイスはありますか？🌽',
-        post3: '来週からブドウの収穫シーズンが始まります！🍇 ワクワクするけど緊張もします。',
+        post3: '来週からみかんの収穫シーズンが始まります！🍊 ワクワクするけど緊張もします。',
         likes: '太陽 ☀️',
         comment: '枝 🌿',
         translate: '翻訳',
@@ -176,7 +176,7 @@ const translations = {
         cancel: 'キャンセル',
         nickname: 'ニックネーム',
         farmName: '農場名',
-        farmNamePlaceholder: '農場名（例：サニーヴィンヤード）',
+        farmNamePlaceholder: '農場名（例：サニーオーチャード）',
         location: '場所',
         locationPlaceholder: '場所（例：ナパバレー）',
         bio: '自己紹介',
@@ -195,7 +195,7 @@ const translations = {
         postBtn: '植える 🌱',
         startConversation: '新しい枝を伸ばしましょう...',
         sunFeedback: '日差しを届けました！ ☀️',
-        grapeMember: 'ブドウ栽培メンバー'
+        grapeMember: 'みかん栽培メンバー 🍊'
     },
     it: {
         logo: '🌱 ConnectGrower',
@@ -208,7 +208,7 @@ const translations = {
         updatesTitle: 'Ultimi Aggiornamenti dagli Agricoltori 🌾',
         post1: 'Oggi abbiamo raccolto 500kg di pomodori biologici! 🍅 Il tempo era perfetto.',
         post2: 'Sto provando un nuovo sistema di irrigazione per i miei campi di mais. Qualche consiglio? 🌽',
-        post3: 'La stagione della vendemmia inizia la prossima settimana! 🍇 Eccitato ma nervoso.',
+        post3: 'La stagione della raccolta degli agrumi inizia la prossima settimana! 🍊 Eccitato ma nervoso.',
         likes: 'Sole ☀️',
         comment: 'Ramo 🌿',
         translate: 'Traduci',
@@ -241,7 +241,7 @@ const translations = {
         cancel: 'Annulla',
         nickname: 'Soprannome',
         farmName: 'Nome della Fattoria',
-        farmNamePlaceholder: 'Nome della Fattoria (es. Vigneto Soleggiato)',
+        farmNamePlaceholder: 'Nome della Fattoria (es. Agrumeto Soleggiato)',
         location: 'Posizione',
         locationPlaceholder: 'Posizione (es. Chianti, Italia)',
         bio: 'Biografia',
@@ -260,7 +260,7 @@ const translations = {
         postBtn: 'Pianta 🌱',
         startConversation: 'Fai crescere un nuovo ramo...',
         sunFeedback: 'Hai mandato un raggio di Sole! ☀️',
-        grapeMember: 'Membro Viticoltore'
+        grapeMember: 'Membro Agrumicoltore 🍊'
     }
 };
 
