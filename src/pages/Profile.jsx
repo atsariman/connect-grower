@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { collection, query, where, orderBy, onSnapshot, doc, getDoc, setDoc } from 'firebase/firestore';
+import { updateProfile } from 'firebase/auth'; // Import updateProfile
 import PostCard from '../components/PostCard';
-import '../styles/reddit_theme.css'; // Re-use our base styles
+import '../styles/reddit_theme.css';
 
 const Profile = () => {
     const { currentUser } = useAuth();
     const [myPosts, setMyPosts] = useState([]);
     const [profileData, setProfileData] = useState({
+        displayName: '', // Added displayName
         bio: '',
         location: '',
         farmName: ''
@@ -24,7 +26,16 @@ const Profile = () => {
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-                setProfileData(docSnap.data());
+                const data = docSnap.data();
+                setProfileData({
+                    ...data,
+                    displayName: currentUser.displayName || data.displayName || '' // Prioritize auth display name if available
+                });
+            } else {
+                setProfileData(prev => ({
+                    ...prev,
+                    displayName: currentUser.displayName || ''
+                }));
             }
             setLoading(false);
         };
@@ -55,11 +66,20 @@ const Profile = () => {
     const handleSaveProfile = async () => {
         if (!currentUser) return;
         try {
+            // Update Auth Profile if nickname changed
+            if (profileData.displayName !== currentUser.displayName) {
+                await updateProfile(currentUser, {
+                    displayName: profileData.displayName
+                });
+            }
+
+            // Update Firestore
             await setDoc(doc(db, "users", currentUser.uid), {
                 ...profileData,
                 email: currentUser.email,
                 updatedAt: new Date()
             }, { merge: true });
+
             setIsEditing(false);
             alert("Profile updated! 🚜");
         } catch (e) {
@@ -80,7 +100,7 @@ const Profile = () => {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                         <div>
                             <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0 0 5px 0' }}>
-                                {currentUser?.displayName || currentUser?.email?.split('@')[0]}
+                                {profileData.displayName || currentUser?.email?.split('@')[0]}
                             </h2>
                             <span style={{ background: '#f0f0f0', color: '#666', padding: '4px 8px', borderRadius: '12px', fontSize: '12px' }}>
                                 🍇 GrapeGrowers Member
@@ -94,25 +114,43 @@ const Profile = () => {
 
                     {isEditing ? (
                         <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                            <input
-                                className="create-post-input"
-                                placeholder="Farm Name (e.g., Sunny Vinyard)"
-                                value={profileData.farmName || ''}
-                                onChange={(e) => setProfileData({ ...profileData, farmName: e.target.value })}
-                            />
-                            <input
-                                className="create-post-input"
-                                placeholder="Location (e.g., Napa Valley, CA)"
-                                value={profileData.location || ''}
-                                onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
-                            />
-                            <textarea
-                                className="create-post-input"
-                                placeholder="Bio: Tell us about your farming journey..."
-                                value={profileData.bio || ''}
-                                onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
-                            />
-                            <div style={{ display: 'flex', gap: '10px' }}>
+                            <div style={{ textAlign: 'left' }}>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Nickname</label>
+                                <input
+                                    className="create-post-input"
+                                    placeholder="Nickname"
+                                    value={profileData.displayName || ''}
+                                    onChange={(e) => setProfileData({ ...profileData, displayName: e.target.value })}
+                                />
+                            </div>
+                            <div style={{ textAlign: 'left' }}>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Farm Name</label>
+                                <input
+                                    className="create-post-input"
+                                    placeholder="Farm Name (e.g., Sunny Vinyard)"
+                                    value={profileData.farmName || ''}
+                                    onChange={(e) => setProfileData({ ...profileData, farmName: e.target.value })}
+                                />
+                            </div>
+                            <div style={{ textAlign: 'left' }}>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Location</label>
+                                <input
+                                    className="create-post-input"
+                                    placeholder="Location (e.g., Napa Valley, CA)"
+                                    value={profileData.location || ''}
+                                    onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
+                                />
+                            </div>
+                            <div style={{ textAlign: 'left' }}>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Bio</label>
+                                <textarea
+                                    className="create-post-input"
+                                    placeholder="Bio: Tell us about your farming journey..."
+                                    value={profileData.bio || ''}
+                                    onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
+                                />
+                            </div>
+                            <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                                 <button className="btn btn-primary" onClick={handleSaveProfile}>Save Profile</button>
                                 <button className="vote-btn" onClick={() => setIsEditing(false)} style={{ fontSize: '14px', border: '1px solid #ccc', borderRadius: '4px', padding: '5px 10px' }}>Cancel</button>
                             </div>
