@@ -29,21 +29,20 @@ body {
 
 /* Glassmorphism Effect */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* Utilities */
 .container {
   max-width: 1200px;
+  /* Kept standard width */
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
-  /* Ensure container takes up width */
 }
 
 .btn {
@@ -115,58 +114,21 @@ body {
   /* Header Compact Mode (FIXED) */
   .header-content {
     flex-direction: row;
-    /* Keep row for space utilization */
-    padding: 10px 0;
+    padding: 5px 0;
     gap: 5px;
     align-items: center;
   }
 
   .nav-list {
     display: none !important;
-    /* Hide nav links on mobile */
   }
 
   .translator-wrapper {
     width: auto;
-    /* Allow shrink */
     gap: 5px;
   }
 
-  /* Chat Layout Fix */
-  .chat-layout {
-    height: calc(100dvh - 200px) !important;
-    padding: 10px !important;
-    margin-bottom: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .chat-messages {
-    padding: 10px !important;
-    flex: 1 !important;
-  }
-
-  .chat-input-form {
-    padding: 10px !important;
-    gap: 5px !important;
-    background: white !important;
-  }
-
-  .chat-input-field {
-    padding: 10px !important;
-    font-size: 16px !important;
-  }
-
-  .chat-send-btn {
-    padding: 10px 15px !important;
-  }
-
-  .chat-camera-btn {
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  /* Login */
+  /* Login Helper */
   .login-container {
     margin: 20px auto !important;
     width: 90% !important;
@@ -178,13 +140,15 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
+  /* This pushes logo to left, others to right */
   align-items: center;
+  width: 100%;
 }
 
 .nav-list {

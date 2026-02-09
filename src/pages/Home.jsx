@@ -30,6 +30,8 @@ const Home = () => {
 
             {/* Left Sidebar */}
             <aside className="sidebar">
+                {/* Logo Section Removed: Moved back to Header */}
+
                 <div className="sidebar-card">
                     <div className="sidebar-header">FEEDS</div>
                     <div className={`sidebar-menu-item ${feedType === 'home' ? 'active' : ''}`} onClick={() => setFeedType('home')}>🏠 Home</div>
@@ -76,9 +78,9 @@ const Home = () => {
                 </div>
             </main>
 
-            {/* Right Sidebar (Optional for now, hidden on smaller screens) */}
+            {/* Right Sidebar */}
             <aside className="sidebar" style={{ display: 'none' }}>
-                {/* Placeholder for future widgets like "Trending Crops" or "Weather" */}
+                {/* Future widgets */}
             </aside>
 
         </div>

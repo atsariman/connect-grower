@@ -21,17 +21,14 @@ const Header = () => {
   };
 
   return (
-    <header className="glass-panel header-wrapper" style={{ padding: '10px 0', borderBottom: '1px solid #eee' }}>
-      <div className="container header-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link to="/" style={{ textDecoration: 'none', color: 'var(--primary-color)', fontSize: '1.5rem', fontWeight: 'bold' }}>
-          ConnectGrower 🍇
+    <header className="glass-panel header-wrapper" style={{ padding: '8px 0', borderBottom: '1px solid #eee', background: 'rgba(255, 255, 255, 0.95)' }}>
+      {/* Removed 'container' class to allow full width, added custom padding */}
+      <div className="header-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '100%', padding: '0 20px' }}>
+        <Link to="/" style={{ textDecoration: 'none', color: 'var(--primary-color)', fontSize: '1.4rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <span style={{ fontSize: '1.6rem' }}>🌱</span> ConnectGrower
         </Link>
-        <nav>
-          <ul className="nav-list" style={{ display: 'flex', gap: '20px', listStyle: 'none', margin: 0, padding: 0 }}>
-            <li><Link to="/" style={{ textDecoration: 'none', color: 'var(--text-primary)', fontWeight: '500' }}>🏠 {language === 'ko' ? '홈' : 'Home'}</Link></li>
-            {/* <li><Link to="/chat" style={{ textDecoration: 'none', color: 'var(--text-primary)' }}>💬 {language === 'ko' ? '채팅' : 'Chat'}</Link></li> */}
-          </ul>
-        </nav>
+        <div style={{ flex: 1 }}>{/* Spacer */}</div>
+
         <div className="translator-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <select
             value={language}

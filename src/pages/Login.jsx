@@ -12,8 +12,8 @@ const Login = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const [verificationSent, setVerificationSent] = useState(false);
 
+    // Email verification state removed as we are making it optional
     const navigate = useNavigate();
     const { t } = useLanguage();
 
@@ -50,14 +50,11 @@ const Login = () => {
         try {
             if (isLogin) {
                 // Login Logic
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                await signInWithEmailAndPassword(auth, email, password);
 
-                // Allow login if email is verified
-                if (!userCredential.user.emailVerified) {
-                    await signOut(auth);
-                    setError("Please verify your email before logging in. Check your inbox.");
-                    return;
-                }
+                // Optional: We can show a warning if email is not verified, but let them in
+                // if (!userCredential.user.emailVerified) { ... }
+
                 navigate("/");
             } else {
                 // Sign Up Logic
@@ -68,13 +65,17 @@ const Login = () => {
                     displayName: name
                 });
 
-                // Send Verification Email
-                await sendEmailVerification(userCredential.user);
+                // Send Verification Email (Optional background process)
+                try {
+                    await sendEmailVerification(userCredential.user);
+                } catch (verifyError) {
+                    console.error("Verification email failed:", verifyError);
+                    // Continue anyway, don't block user
+                }
 
-                // Sign out immediately so they have to login after verification
-                await signOut(auth);
-
-                setVerificationSent(true);
+                // DIRECT LOGIN: Do not sign out. Just navigate to Home.
+                // We treat them as logged in immediately.
+                navigate("/");
             }
         } catch (err) {
             console.error(err);
@@ -102,40 +103,7 @@ const Login = () => {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
-        setVerificationSent(false);
     };
-
-    if (verificationSent) {
-        return (
-            <div style={{
-                minHeight: "85vh",
-                padding: "20px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%"
-            }}>
-                <div className="glass-panel" style={{ padding: "40px", width: "100%", maxWidth: "450px", textAlign: "center" }}>
-                    <div style={{ fontSize: '3rem', marginBottom: '20px' }}>📧</div>
-                    <h2 style={{ color: "var(--primary-color)", marginBottom: "15px" }}>Verification Email Sent!</h2>
-                    <p style={{ color: "var(--text-secondary)", marginBottom: "30px", lineHeight: '1.6' }}>
-                        We've sent a verification link to <strong>{email}</strong>.<br />
-                        Please check your inbox (and spam folder) and click the link to activate your account.
-                    </p>
-                    <button
-                        onClick={() => {
-                            setVerificationSent(false);
-                            setIsLogin(true);
-                        }}
-                        className="btn btn-primary"
-                        style={{ width: '100%', padding: '12px' }}
-                    >
-                        Back to Login
-                    </button>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div style={{
@@ -192,7 +160,7 @@ const Login = () => {
                 </div>
 
                 <h2 style={{ color: "var(--text-primary)", marginBottom: "20px", fontSize: '1.4rem' }}>
-                    {isLogin ? "Welcome Back! 👋" : "Join Our Global Family 🌍"}
+                    {isLogin ? "Welcome Back! 👋" : "Create Account"}
                 </h2>
 
                 {error && (
