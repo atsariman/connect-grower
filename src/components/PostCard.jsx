@@ -191,7 +191,7 @@ const PostCard = ({ post }) => {
                             marginBottom: '10px'
                         }}
                     >
-                        🌍 {showOriginal ? 'View Translated' : 'Translated from original'}
+                        🌍 {showOriginal ? t('viewTranslated') : t('translatedFrom')}
                     </div>
                 )}
 
@@ -242,25 +242,25 @@ const PostCard = ({ post }) => {
                                         <div className="comment-text" style={{ fontSize: '14px' }}>{displayCommentText}</div>
                                         {translatedComments[index] && (
                                             <div style={{ fontSize: '11px', color: '#1da1f2', marginTop: '2px' }}>
-                                                {showOriginal ? 'View Translated' : '🌍 Translated'}
+                                                {showOriginal ? t('viewTranslated') : `🌍 ${t('translated')}`}
                                             </div>
                                         )}
                                     </div>
                                 );
                             })}
-                            {comments.length === 0 && <div style={{ color: '#999', fontSize: '13px', padding: '10px 0' }}>Start the conversation...</div>}
+                            {comments.length === 0 && <div style={{ color: '#999', fontSize: '13px', padding: '10px 0' }}>{t('startConversation')}</div>}
                         </div>
 
                         {currentUser && (
                             <form className="comment-input-area" onSubmit={handleCommentSubmit} style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                                 <input
                                     type="text"
-                                    placeholder={`Reply to ${post.author}...`}
+                                    placeholder={`${t('replyTo')} ${post.author}...`}
                                     value={newComment}
                                     onChange={(e) => setNewComment(e.target.value)}
                                     style={{ flex: 1, padding: '8px 12px', borderRadius: '20px', border: '1px solid #ddd', fontSize: '14px', background: '#f9f9f9' }}
                                 />
-                                <button type="submit" disabled={!newComment.trim()} style={{ background: 'none', border: 'none', color: '#0095f6', fontWeight: 'bold', cursor: 'pointer' }}>Post</button>
+                                <button type="submit" disabled={!newComment.trim()} style={{ background: 'none', border: 'none', color: '#0095f6', fontWeight: 'bold', cursor: 'pointer' }}>{t('postBtn')}</button>
                             </form>
                         )}
                     </div>

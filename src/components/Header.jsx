@@ -25,7 +25,7 @@ const Header = () => {
       {/* Removed 'container' class to allow full width, added custom padding */}
       <div className="header-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '100%', padding: '0 20px' }}>
         <Link to="/" style={{ textDecoration: 'none', color: 'var(--primary-color)', fontSize: '1.4rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <span style={{ fontSize: '1.6rem' }}>🌱</span> ConnectGrower
+          <span style={{ fontSize: '1.6rem' }}>🌱</span> {t('logo')}
         </Link>
         <div style={{ flex: 1 }}>{/* Spacer */}</div>
 
@@ -43,7 +43,7 @@ const Header = () => {
 
           {currentUser ? (
             <>
-              <Link to="/profile" title="My Profile" style={{ textDecoration: 'none', border: '1px solid #ddd', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f5f5', fontSize: '20px' }}>
+              <Link to="/profile" title={t('myProfile')} style={{ textDecoration: 'none', border: '1px solid #ddd', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f5f5', fontSize: '20px' }}>
                 🧑‍🌾
               </Link>
               <button
@@ -51,13 +51,13 @@ const Header = () => {
                 className="btn btn-secondary"
                 style={{ padding: '6px 12px', fontSize: '0.85rem' }}
               >
-                Logout
+                {t('logout')}
               </button>
             </>
           ) : (
             <Link to="/login">
               <button className="btn btn-primary" style={{ padding: '6px 15px', fontSize: '0.9rem' }}>
-                Login
+                {t('login')}
               </button>
             </Link>
           )}

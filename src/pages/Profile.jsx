@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { collection, query, where, orderBy, onSnapshot, doc, getDoc, setDoc } from 'firebase/firestore';
-import { updateProfile } from 'firebase/auth'; // Import updateProfile
+import { updateProfile } from 'firebase/auth';
 import PostCard from '../components/PostCard';
+import { useLanguage } from '../context/LanguageContext'; // Import useLanguage
 import '../styles/reddit_theme.css';
 
 const Profile = () => {
     const { currentUser } = useAuth();
+    const { t } = useLanguage(); // Destructure t
     const [myPosts, setMyPosts] = useState([]);
     const [profileData, setProfileData] = useState({
-        displayName: '', // Added displayName
+        displayName: '',
         bio: '',
         location: '',
         farmName: ''
@@ -29,7 +31,7 @@ const Profile = () => {
                 const data = docSnap.data();
                 setProfileData({
                     ...data,
-                    displayName: currentUser.displayName || data.displayName || '' // Prioritize auth display name if available
+                    displayName: currentUser.displayName || data.displayName || ''
                 });
             } else {
                 setProfileData(prev => ({
@@ -103,7 +105,7 @@ const Profile = () => {
                                 {profileData.displayName || currentUser?.email?.split('@')[0]}
                             </h2>
                             <span style={{ background: '#f0f0f0', color: '#666', padding: '4px 8px', borderRadius: '12px', fontSize: '12px' }}>
-                                🍇 GrapeGrowers Member
+                                {t('grapeMember')}
                             </span>
                         </div>
                         <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px' }}>
@@ -115,44 +117,44 @@ const Profile = () => {
                     {isEditing ? (
                         <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                             <div style={{ textAlign: 'left' }}>
-                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Nickname</label>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>{t('nickname')}</label>
                                 <input
                                     className="create-post-input"
-                                    placeholder="Nickname"
+                                    placeholder={t('nickname')}
                                     value={profileData.displayName || ''}
                                     onChange={(e) => setProfileData({ ...profileData, displayName: e.target.value })}
                                 />
                             </div>
                             <div style={{ textAlign: 'left' }}>
-                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Farm Name</label>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>{t('farmName')}</label>
                                 <input
                                     className="create-post-input"
-                                    placeholder="Farm Name (e.g., Sunny Vinyard)"
+                                    placeholder={t('farmNamePlaceholder')}
                                     value={profileData.farmName || ''}
                                     onChange={(e) => setProfileData({ ...profileData, farmName: e.target.value })}
                                 />
                             </div>
                             <div style={{ textAlign: 'left' }}>
-                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Location</label>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>{t('location')}</label>
                                 <input
                                     className="create-post-input"
-                                    placeholder="Location (e.g., Napa Valley, CA)"
+                                    placeholder={t('locationPlaceholder')}
                                     value={profileData.location || ''}
                                     onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
                                 />
                             </div>
                             <div style={{ textAlign: 'left' }}>
-                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Bio</label>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>{t('bio')}</label>
                                 <textarea
                                     className="create-post-input"
-                                    placeholder="Bio: Tell us about your farming journey..."
+                                    placeholder={t('bioPlaceholder')}
                                     value={profileData.bio || ''}
                                     onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
                                 />
                             </div>
                             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                                <button className="btn btn-primary" onClick={handleSaveProfile}>Save Profile</button>
-                                <button className="vote-btn" onClick={() => setIsEditing(false)} style={{ fontSize: '14px', border: '1px solid #ccc', borderRadius: '4px', padding: '5px 10px' }}>Cancel</button>
+                                <button className="btn btn-primary" onClick={handleSaveProfile}>{t('saveProfile')}</button>
+                                <button className="vote-btn" onClick={() => setIsEditing(false)} style={{ fontSize: '14px', border: '1px solid #ccc', borderRadius: '4px', padding: '5px 10px' }}>{t('cancel')}</button>
                             </div>
                         </div>
                     ) : (
@@ -160,13 +162,13 @@ const Profile = () => {
                             {profileData.farmName && <div style={{ fontWeight: 'bold' }}>📍 {profileData.farmName}</div>}
                             {profileData.location && <div style={{ color: '#555', fontSize: '14px', marginBottom: '5px' }}>🌍 {profileData.location}</div>}
                             <p style={{ lineHeight: '1.5', color: '#333' }}>
-                                {profileData.bio || "No bio yet. Tap 'Edit Profile' to introduce yourself!"}
+                                {profileData.bio || t('noBio')}
                             </p>
                             <button
                                 onClick={() => setIsEditing(true)}
                                 style={{ width: '100%', marginTop: '15px', padding: '8px', border: '1px solid #ccc', background: 'white', borderRadius: '4px', cursor: 'pointer', fontWeight: '600' }}
                             >
-                                Edit Profile
+                                {t('editProfile')}
                             </button>
                         </div>
                     )}
@@ -175,10 +177,10 @@ const Profile = () => {
                 {/* Tabs (Threads Style) */}
                 <div style={{ display: 'flex', borderBottom: '1px solid #dbdbdb', marginBottom: '15px' }}>
                     <div style={{ flex: 1, textAlign: 'center', padding: '12px', borderBottom: '2px solid black', fontWeight: 'bold', cursor: 'pointer' }}>
-                        Threads
+                        {t('threads')}
                     </div>
                     <div style={{ flex: 1, textAlign: 'center', padding: '12px', color: '#999', cursor: 'pointer' }}>
-                        Replies
+                        {t('replies')}
                     </div>
                 </div>
 
@@ -189,7 +191,7 @@ const Profile = () => {
                     ))}
                     {myPosts.length === 0 && (
                         <div style={{ textAlign: 'center', padding: '40px', color: '#888' }}>
-                            <p>You haven't posted anything yet.</p>
+                            <p>{t('noPosts')}</p>
                         </div>
                     )}
                 </div>

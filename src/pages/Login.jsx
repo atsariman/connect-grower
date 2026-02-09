@@ -117,7 +117,7 @@ const Login = () => {
             <div className="glass-panel" style={{ padding: "40px", width: "100%", maxWidth: "450px", textAlign: "center" }}>
                 <Link to="/" style={{ textDecoration: 'none', display: 'block', marginBottom: '25px' }}>
                     <span style={{ fontSize: '2.2rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>
-                        🌱 ConnectGrower
+                        {t('logo')}
                     </span>
                 </Link>
 
@@ -138,7 +138,7 @@ const Login = () => {
                             transition: 'all 0.3s'
                         }}
                     >
-                        Log In
+                        {t('login')}
                     </button>
                     <button
                         onClick={() => isLogin && toggleMode()}
@@ -155,12 +155,12 @@ const Login = () => {
                             transition: 'all 0.3s'
                         }}
                     >
-                        Sign Up
+                        {t('signup')}
                     </button>
                 </div>
 
                 <h2 style={{ color: "var(--text-primary)", marginBottom: "20px", fontSize: '1.4rem' }}>
-                    {isLogin ? "Welcome Back! 👋" : "Create Account"}
+                    {isLogin ? t('welcomeBack') : t('createAccount')}
                 </h2>
 
                 {error && (
@@ -172,10 +172,10 @@ const Login = () => {
                 <form onSubmit={handleEmailAuth} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
                     {!isLogin && (
                         <div style={{ textAlign: 'left' }}>
-                            <label style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px', display: 'block' }}>Full Name</label>
+                            <label style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px', display: 'block' }}>{t('fullName')}</label>
                             <input
                                 type="text"
-                                placeholder="ex. John Farmer"
+                                placeholder={t('fullName')}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required={!isLogin}
@@ -185,10 +185,10 @@ const Login = () => {
                     )}
 
                     <div style={{ textAlign: 'left' }}>
-                        <label style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px', display: 'block' }}>Email Address</label>
+                        <label style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px', display: 'block' }}>{t('emailPlaceholder')}</label>
                         <input
                             type="email"
-                            placeholder="name@example.com"
+                            placeholder={t('emailPlaceholder')}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -197,10 +197,10 @@ const Login = () => {
                     </div>
 
                     <div style={{ textAlign: 'left' }}>
-                        <label style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px', display: 'block' }}>Password</label>
+                        <label style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px', display: 'block' }}>{t('passwordPlaceholder')}</label>
                         <input
                             type="password"
-                            placeholder="********"
+                            placeholder={t('passwordPlaceholder')}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -210,10 +210,10 @@ const Login = () => {
 
                     {!isLogin && (
                         <div style={{ textAlign: 'left' }}>
-                            <label style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px', display: 'block' }}>Confirm Password</label>
+                            <label style={{ fontSize: '0.85rem', color: '#666', marginBottom: '5px', display: 'block' }}>{t('confirmPassword')}</label>
                             <input
                                 type="password"
-                                placeholder="********"
+                                placeholder={t('confirmPassword')}
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 required={!isLogin}
@@ -235,13 +235,13 @@ const Login = () => {
                             cursor: loading ? 'not-allowed' : 'pointer'
                         }}
                     >
-                        {loading ? "Processing..." : (isLogin ? "Log In" : "Create Account")}
+                        {loading ? t('processing') : (isLogin ? t('login') : t('createAccount'))}
                     </button>
                 </form>
 
                 <div style={{ display: 'flex', alignItems: 'center', margin: "25px 0", color: "#888" }}>
                     <div style={{ flex: 1, height: '1px', background: '#ddd' }}></div>
-                    <span style={{ padding: '0 10px', fontSize: '0.8rem' }}>OR</span>
+                    <span style={{ padding: '0 10px', fontSize: '0.8rem' }}>{t('or')}</span>
                     <div style={{ flex: 1, height: '1px', background: '#ddd' }}></div>
                 </div>
 

@@ -23,7 +23,48 @@ const translations = {
         forumTitle: 'Farm Insight Board (Coming Soon) 🚜',
         forumDesc: 'Share your farming knowledge and ask questions here!',
         forumSoon: 'We are building this feature for you!',
-        forumDetail: 'Soon you will be able to post detailed guides and questions.'
+        forumDetail: 'Soon you will be able to post detailed guides and questions.',
+
+        // Auth
+        login: 'Log In',
+        signup: 'Sign Up',
+        createAccount: 'Create Account',
+        welcomeBack: 'Welcome Back! 👋',
+        fullName: 'Full Name',
+        emailPlaceholder: 'name@example.com',
+        passwordPlaceholder: '********',
+        confirmPassword: 'Confirm Password',
+        processing: 'Processing...',
+        or: 'OR',
+        signInGoogle: 'Sign in with Google',
+
+        // Profile
+        myProfile: 'My Profile',
+        logout: 'Logout',
+        editProfile: 'Edit Profile',
+        saveProfile: 'Save Profile',
+        cancel: 'Cancel',
+        nickname: 'Nickname',
+        farmName: 'Farm Name',
+        farmNamePlaceholder: 'Farm Name (e.g., Sunny Vinyard)',
+        location: 'Location',
+        locationPlaceholder: 'Location (e.g., Napa Valley, CA)',
+        bio: 'Bio',
+        bioPlaceholder: 'Bio: Tell us about your farming journey...',
+        noBio: "No bio yet. Tap 'Edit Profile' to introduce yourself!",
+        threads: 'Threads',
+        replies: 'Replies',
+        noPosts: "You haven't posted anything yet.",
+
+        // Post
+        translated: 'Translated',
+        viewTranslated: 'View Translated',
+        viewOriginal: 'See Original',
+        translatedFrom: 'Translated from original',
+        replyTo: 'Reply to',
+        postBtn: 'Post',
+        startConversation: 'Start the conversation...',
+        grapeMember: 'GrapeGrowers Member'
     },
     ko: {
         logo: '🌱 ConnectGrower',
@@ -46,7 +87,48 @@ const translations = {
         forumTitle: '농사 지혜 게시판 (오픈 예정) 🚜',
         forumDesc: '여기에 농사 노하우를 공유하고 질문해보세요!',
         forumSoon: '여러분을 위해 열심히 만들고 있어요!',
-        forumDetail: '곧 자세한 가이드와 질문을 올릴 수 있게 될 거예요.'
+        forumDetail: '곧 자세한 가이드와 질문을 올릴 수 있게 될 거예요.',
+
+        // Auth
+        login: '로그인',
+        signup: '회원가입',
+        createAccount: '계정 생성',
+        welcomeBack: '환영합니다! 👋',
+        fullName: '이름',
+        emailPlaceholder: '이메일 주소',
+        passwordPlaceholder: '비밀번호',
+        confirmPassword: '비밀번호 확인',
+        processing: '처리 중...',
+        or: '또는',
+        signInGoogle: 'Google로 로그인',
+
+        // Profile
+        myProfile: '내 프로필',
+        logout: '로그아웃',
+        editProfile: '프로필 수정',
+        saveProfile: '프로필 저장',
+        cancel: '취소',
+        nickname: '닉네임',
+        farmName: '농장 이름',
+        farmNamePlaceholder: '농장 이름 (예: 햇살 포도원)',
+        location: '위치',
+        locationPlaceholder: '위치 (예: 경북 영천)',
+        bio: '소개',
+        bioPlaceholder: '소개: 당신의 농사 이야기를 들려주세요...',
+        noBio: "아직 소개가 없습니다. '프로필 수정'을 눌러 자신을 소개해보세요!",
+        threads: '스레드',
+        replies: '답글',
+        noPosts: "아직 작성한 글이 없습니다.",
+
+        // Post
+        translated: '번역됨',
+        viewTranslated: '번역 보기',
+        viewOriginal: '원문 보기',
+        translatedFrom: '원문에서 번역됨',
+        replyTo: '답글 남기기:',
+        postBtn: '게시',
+        startConversation: '대화를 시작해보세요...',
+        grapeMember: '포도 재배자 멤버 🍇'
     },
     ja: {
         logo: '🌱 ConnectGrower',
@@ -69,7 +151,48 @@ const translations = {
         forumTitle: '農業インサイト掲示板（近日公開）🚜',
         forumDesc: 'あなたの農業ノウハウを共有し、ここで質問しましょう！',
         forumSoon: '現在、この機能を構築中です！',
-        forumDetail: '間もなく詳細なガイドや質問を投稿できるようになります。'
+        forumDetail: '間もなく詳細なガイドや質問を投稿できるようになります。',
+
+        // Auth
+        login: 'ログイン',
+        signup: 'サインアップ',
+        createAccount: 'アカウント作成',
+        welcomeBack: 'おかえりなさい！👋',
+        fullName: '名前',
+        emailPlaceholder: 'メールアドレス',
+        passwordPlaceholder: 'パスワード',
+        confirmPassword: 'パスワード確認',
+        processing: '処理中...',
+        or: 'または',
+        signInGoogle: 'Googleでログイン',
+
+        // Profile
+        myProfile: 'プロフィール',
+        logout: 'ログアウト',
+        editProfile: 'プロフィール編集',
+        saveProfile: '保存',
+        cancel: 'キャンセル',
+        nickname: 'ニックネーム',
+        farmName: '農場名',
+        farmNamePlaceholder: '農場名（例：サニーヴィンヤード）',
+        location: '場所',
+        locationPlaceholder: '場所（例：ナパバレー）',
+        bio: '自己紹介',
+        bioPlaceholder: '自己紹介：あなたの農業の話を聞かせてください...',
+        noBio: "自己紹介はまだありません。「プロフィール編集」をタップして自己紹介しましょう！",
+        threads: 'スレッド',
+        replies: '返信',
+        noPosts: "まだ投稿がありません。",
+
+        // Post
+        translated: '翻訳済み',
+        viewTranslated: '翻訳を見る',
+        viewOriginal: '原文を見る',
+        translatedFrom: '原文から翻訳',
+        replyTo: '返信先:',
+        postBtn: '投稿',
+        startConversation: '会話を始めましょう...',
+        grapeMember: 'ブドウ栽培メンバー'
     },
     it: {
         logo: '🌱 ConnectGrower',
@@ -92,14 +215,56 @@ const translations = {
         forumTitle: 'Bacheca Approfondimenti (Prossimamente) 🚜',
         forumDesc: 'Condividi le tue conoscenze agricole e fai domande qui!',
         forumSoon: 'Stiamo costruendo questa funzionalità per te!',
-        forumDetail: 'Presto potrai pubblicare guide dettagliate e domande.'
+        forumDetail: 'Presto potrai pubblicare guide dettagliate e domande.',
+
+        // Auth
+        login: 'Accedi',
+        signup: 'Iscriviti',
+        createAccount: 'Crea Account',
+        welcomeBack: 'Bentornato! 👋',
+        fullName: 'Nome Completo',
+        emailPlaceholder: 'indirizzo@esempio.com',
+        passwordPlaceholder: '********',
+        confirmPassword: 'Conferma Password',
+        processing: 'Elaborazione...',
+        or: 'O',
+        signInGoogle: 'Accedi con Google',
+
+        // Profile
+        myProfile: 'Il mio Profilo',
+        logout: 'Esci',
+        editProfile: 'Modifica Profilo',
+        saveProfile: 'Salva Profilo',
+        cancel: 'Annulla',
+        nickname: 'Soprannome',
+        farmName: 'Nome della Fattoria',
+        farmNamePlaceholder: 'Nome della Fattoria (es. Vigneto Soleggiato)',
+        location: 'Posizione',
+        locationPlaceholder: 'Posizione (es. Chianti, Italia)',
+        bio: 'Biografia',
+        bioPlaceholder: 'Biografia: Raccontaci la tua storia agricola...',
+        noBio: "Nessuna biografia ancora. Tocca 'Modifica Profilo' per presentarti!",
+        threads: 'Thread',
+        replies: 'Risposte',
+        noPosts: "Non hai ancora pubblicato nulla.",
+
+        // Post
+        translated: 'Tradotto',
+        viewTranslated: 'Vedi Traduzione',
+        viewOriginal: 'Vedi Originale',
+        translatedFrom: 'Tradotto dall\'originale',
+        replyTo: 'Rispondi a',
+        postBtn: 'Pubblica',
+        startConversation: 'Inizia la conversazione...',
+        grapeMember: 'Membro Viticoltore'
     }
 };
 
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState('en');
+    // Default language updated to Korean ('ko')
+    const [language, setLanguage] = useState('ko');
 
     const value = {
         language,
