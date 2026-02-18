@@ -25,7 +25,7 @@ const Header = () => {
       {/* Removed 'container' class to allow full width, added custom padding */}
       <div className="header-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '100%', padding: '0 20px' }}>
         <Link to="/" style={{ textDecoration: 'none', color: 'var(--primary-color)', fontSize: '1.4rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <span style={{ fontSize: '1.6rem' }}>🌱</span> {t('logo')}
+          {t('logo')}
         </Link>
         <div style={{ flex: 1 }}>{/* Spacer */}</div>
 

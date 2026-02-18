@@ -15,10 +15,26 @@ const Profile = () => {
         displayName: '',
         bio: '',
         location: '',
-        farmName: ''
+        farmName: '',
+        country: 'US' // Default
     });
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
+
+    const countries = [
+        { code: 'US', name: 'United States', flag: '🇺🇸' },
+        { code: 'KR', name: 'South Korea', flag: '🇰🇷' },
+        { code: 'JP', name: 'Japan', flag: '🇯🇵' },
+        { code: 'IT', name: 'Italy', flag: '🇮🇹' },
+        { code: 'CN', name: 'China', flag: '🇨🇳' },
+        { code: 'IN', name: 'India', flag: '🇮🇳' },
+        { code: 'BR', name: 'Brazil', flag: '🇧🇷' },
+        { code: 'NL', name: 'Netherlands', flag: '🇳🇱' },
+        { code: 'FR', name: 'France', flag: '🇫🇷' },
+        { code: 'ES', name: 'Spain', flag: '🇪🇸' },
+        { code: 'AU', name: 'Australia', flag: '🇦🇺' },
+        { code: 'CA', name: 'Canada', flag: '🇨🇦' },
+    ];
 
     // 1. Fetch User Profile Data
     useEffect(() => {
@@ -31,7 +47,8 @@ const Profile = () => {
                 const data = docSnap.data();
                 setProfileData({
                     ...data,
-                    displayName: currentUser.displayName || data.displayName || ''
+                    displayName: currentUser.displayName || data.displayName || '',
+                    country: data.country || 'US'
                 });
             } else {
                 setProfileData(prev => ({
@@ -92,6 +109,8 @@ const Profile = () => {
 
     if (loading) return <div style={{ textAlign: 'center', marginTop: '50px' }}>Loading profile...</div>;
 
+    const selectedCountry = countries.find(c => c.code === profileData.country) || countries[0];
+
     // Threads-style Minimal Layout
     return (
         <div className="app-layout" style={{ justifyContent: 'center' }}>
@@ -104,9 +123,16 @@ const Profile = () => {
                             <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0 0 5px 0' }}>
                                 {profileData.displayName || currentUser?.email?.split('@')[0]}
                             </h2>
-                            <span style={{ background: '#f0f0f0', color: '#666', padding: '4px 8px', borderRadius: '12px', fontSize: '12px' }}>
-                                {t('grapeMember')}
-                            </span>
+                            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                <span style={{ background: '#f0f0f0', color: '#666', padding: '4px 8px', borderRadius: '12px', fontSize: '12px' }}>
+                                    {t('grapeMember')}
+                                </span>
+                                {profileData.country && (
+                                    <span style={{ fontSize: '14px' }}>
+                                        {selectedCountry.flag} {selectedCountry.name}
+                                    </span>
+                                )}
+                            </div>
                         </div>
                         <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px' }}>
                             {/* Placeholder Avatar */}
@@ -125,6 +151,24 @@ const Profile = () => {
                                     onChange={(e) => setProfileData({ ...profileData, displayName: e.target.value })}
                                 />
                             </div>
+
+                            {/* Country Selection */}
+                            <div style={{ textAlign: 'left' }}>
+                                <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>Country</label>
+                                <select
+                                    className="create-post-input"
+                                    value={profileData.country || 'US'}
+                                    onChange={(e) => setProfileData({ ...profileData, country: e.target.value })}
+                                    style={{ width: '100%', background: 'white' }}
+                                >
+                                    {countries.map(country => (
+                                        <option key={country.code} value={country.code}>
+                                            {country.flag} {country.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
                             <div style={{ textAlign: 'left' }}>
                                 <label style={{ fontSize: '12px', fontWeight: 'bold', color: '#666' }}>{t('farmName')}</label>
                                 <input

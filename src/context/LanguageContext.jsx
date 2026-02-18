@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext } from 'react';
 // Translation Dictionary (Mock Data)
 const translations = {
     en: {
-        logo: '🌱 ConnectGrower',
+        logo: 'ConnectGrower',
         home: 'Home',
         chat: 'Global Chat',
         forum: 'Farm Insight',
@@ -65,10 +65,26 @@ const translations = {
         postBtn: 'Plant 🌱',
         startConversation: 'Grow a new branch...',
         sunFeedback: 'You cast a Sun beam! ☀️',
-        grapeMember: 'CitrusGrowers Member 🍊'
+        grapeMember: 'CitrusGrowers Member 🍊',
+
+        // Topics & Prompts
+        topic_general: 'General',
+        topic_harvest: 'Harvest 🧺',
+        topic_issue: 'Issue ⚠️',
+        topic_market: 'Market 💰',
+        topic_question: 'Question ❓',
+        ph_general: 'Share your farming story...',
+        ph_harvest: 'How is your harvest going? Share yield, quality, or photos! 🍊',
+        ph_issue: 'Describe the pest, disease, or challenge you are facing...',
+        ph_market: 'What are the current prices or market trends in your area?',
+        ph_question: 'Ask the community for advice...',
+        filter_all: 'All',
+        filter_harvest: 'Harvests',
+        filter_issue: 'Issues',
+        filter_market: 'Market'
     },
     ko: {
-        logo: '🌱 ConnectGrower',
+        logo: 'ConnectGrower',
         home: '홈',
         chat: '글로벌 채팅',
         forum: '농사 지혜',
@@ -130,10 +146,26 @@ const translations = {
         postBtn: '심기 🌱',
         startConversation: '새로운 가지를 쳐보세요...',
         sunFeedback: '햇살을 비추었습니다! ☀️',
-        grapeMember: '감귤 재배자 멤버 🍊'
+        grapeMember: '감귤 재배자 멤버 🍊',
+
+        // Topics & Prompts
+        topic_general: '일반',
+        topic_harvest: '수확 🧺',
+        topic_issue: '문제/병해충 ⚠️',
+        topic_market: '시장/가격 💰',
+        topic_question: '질문 ❓',
+        ph_general: '농사 이야기를 공유해주세요...',
+        ph_harvest: '수확은 어떠신가요? 수확량이나 품질 이야기를 들려주세요! 🍊',
+        ph_issue: '겪고 계신 병해충이나 어려움을 설명해주세요...',
+        ph_market: '지역의 현재 시세나 시장 동향은 어떤가요?',
+        ph_question: '커뮤니티에 조언을 구해보세요...',
+        filter_all: '전체',
+        filter_harvest: '수확',
+        filter_issue: '문제',
+        filter_market: '시장'
     },
     ja: {
-        logo: '🌱 ConnectGrower',
+        logo: 'ConnectGrower',
         home: 'ホーム',
         chat: 'グローバルチャット',
         forum: '農業インサイト',
@@ -195,10 +227,26 @@ const translations = {
         postBtn: '植える 🌱',
         startConversation: '新しい枝を伸ばしましょう...',
         sunFeedback: '日差しを届けました！ ☀️',
-        grapeMember: 'みかん栽培メンバー 🍊'
+        grapeMember: 'みかん栽培メンバー 🍊',
+
+        // Topics & Prompts
+        topic_general: '一般',
+        topic_harvest: '収穫 🧺',
+        topic_issue: '課題/病害虫 ⚠️',
+        topic_market: '市場/価格 💰',
+        topic_question: '質問 ❓',
+        ph_general: 'あなたの農業の話を共有してください...',
+        ph_harvest: '収穫の調子はどうですか？収穫量や品質について教えてください！🍊',
+        ph_issue: '直面している病害虫や課題について説明してください...',
+        ph_market: 'あなたの地域の現在の価格や市場動向はどうですか？',
+        ph_question: 'コミュニティにアドバイスを求めてみましょう...',
+        filter_all: 'すべて',
+        filter_harvest: '収穫',
+        filter_issue: '課題',
+        filter_market: '市場'
     },
     it: {
-        logo: '🌱 ConnectGrower',
+        logo: 'ConnectGrower',
         home: 'Home',
         chat: 'Chat Globale',
         forum: 'Approfondimenti',
@@ -260,7 +308,23 @@ const translations = {
         postBtn: 'Pianta 🌱',
         startConversation: 'Fai crescere un nuovo ramo...',
         sunFeedback: 'Hai mandato un raggio di Sole! ☀️',
-        grapeMember: 'Membro Agrumicoltore 🍊'
+        grapeMember: 'Membro Agrumicoltore 🍊',
+
+        // Topics & Prompts
+        topic_general: 'Generale',
+        topic_harvest: 'Raccolto 🧺',
+        topic_issue: 'Problema ⚠️',
+        topic_market: 'Mercato 💰',
+        topic_question: 'Domanda ❓',
+        ph_general: 'Condividi la tua storia agricola...',
+        ph_harvest: 'Come va il raccolto? Condividi quantità o qualità! 🍊',
+        ph_issue: 'Descrivi il parassita o la sfida che stai affrontando...',
+        ph_market: 'Quali sono i prezzi o le tendenze di mercato nella tua zona?',
+        ph_question: 'Chiedi consiglio alla community...',
+        filter_all: 'Tutti',
+        filter_harvest: 'Raccolti',
+        filter_issue: 'Problemi',
+        filter_market: 'Mercato'
     }
 };
 
